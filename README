@@ -1,0 +1,147 @@
+
+        BLACKJACK (PYTHON)
+================================================================================
+
+A simple command-line Blackjack game written in Python. Play against the computer,
+try to get as close to 21 as possible without going over,
+and see who wins each round.
+
+
+================================================================================
+FEATURES
+================================================================================
+- Classic Blackjack gameplay against a computer dealer
+- Optional rules screen before starting a game
+- Automatic Ace handling (11 -> 1) to avoid busting
+- Natural Blackjack detection (Ace + 10-value card in two cards)
+- Dealer follows the standard "hit until 17" rule
+- Replayable rounds - keep playing as long as you like
+- Emoji-based result messages for a bit of fun
+
+
+================================================================================
+REQUIREMENTS
+================================================================================
+- Python 3.6+
+- No third-party packages required.
+  Only the standard library (random) is used.
+
+
+================================================================================
+PROJECT STRUCTURE
+================================================================================
+.
+|-- main.py          Main game file (the code you provided)
+|-- art.py           Contains the `logo` ASCII art variable
+|-- rules.py         Contains the `rulebook` string with rules text
+|-- README.txt       This file
+
+NOTE: art.py and rules.py are imported at the top of main.py.
+You must create these files (or remove the imports and their
+usages) for the game to run.
+
+
+================================================================================
+HOW TO RUN
+================================================================================
+1. Make sure main.py, art.py, and rules.py are all in
+   the same directory.
+2. Open a terminal in that directory.
+3. Run:
+
+       python main.py
+
+
+================================================================================
+HOW TO PLAY
+================================================================================
+When the game starts, you'll be prompted:
+
+    Do you want to play a game of Blackjack? Type 'yes' or 'no':
+
+- Type 'yes' to start.
+- You'll then be asked whether you want to read the rules first.
+- During the round, type 'yes' to draw another card ("hit")
+  or 'no' to keep your hand ("stand").
+
+SPECIAL SCORE VALUES
+--------------------
+  Score    Meaning
+  -------  --------------------------------------------
+  0        Natural Blackjack (Ace + 10-value in 2 cards)
+  < 21     Under - still in the game
+  21       Perfect score (via more than two cards)
+  > 21     Bust - you lose immediately
+
+
+================================================================================
+GAME RULES
+================================================================================
+1. Both the player and the computer are dealt two cards
+   at the start.
+2. Number cards are worth their face value; face cards
+   are worth 10; an Ace is worth 11 (or 1 if it would
+   cause a bust).
+3. A two-card hand totaling 21 is a "Blackjack".
+4. The player may draw additional cards or stand at
+   any point.
+5. The computer (dealer) keeps drawing cards until its
+   score is 17 or higher.
+6. The winner is decided by compare():
+   - Equal scores        -> Draw
+   - Player busts        -> Player loses
+   - Player has Blackjack-> Player wins
+   - Dealer busts        -> Player wins
+   - Dealer has Blackjack-> Player loses
+   - Player's score higher -> Player wins
+   - Otherwise           -> Player loses
+
+
+================================================================================
+CODE OVERVIEW
+================================================================================
+  Function                     Purpose
+  ---------------------------  --------------------------------
+  deal_card()                  Returns a random card from the deck.
+  calculate_score(cards)       Computes the hand's total score,
+                               handling Aces and Blackjack detection.
+  compare(u_score, c_score)    Compares player and dealer scores,
+                               returns the result message.
+  game_on()                    Runs one full round: dealing, player
+                               turn, dealer turn, and result.
+
+The main loop at the bottom of the file keeps the game running
+until the user answers 'no'.
+
+
+================================================================================
+EXAMPLE GAMEPLAY
+================================================================================
+    Do you want to play a game of Blackjack? Type 'yes' or 'no': yes
+    Do you want to read the rules first? Type 'yes' or 'no': no
+
+    Your cards: [10, 7], current score: 17
+    Computer's first card: 9
+    Type 'yes' to get another card, type 'no' to pass: no
+    Your final hand: [10, 7], final score: 17
+    Computer's final hand: [9, 8], final score: 17
+    Draw.
+
+
+================================================================================
+CREDITS
+================================================================================
+
+Project: 100 Days of Code: The Complete Python Pro Bootcamp - Day 11
+
+
+================================================================================
+LICENSE
+================================================================================
+This project is free to use and modify for personal or
+educational purposes. No warranty is provided.
+
+        ♠️ ♥️ ♣️ ♦️ ♠️ ♥️ ♣️ ♦️
+~ May your Aces always find a ten, and your
+    dealer always bust. Happy coding! ~
+        ♠️ ♥️ ♣️ ♦️ ♠️ ♥️ ♣️ ♦️
